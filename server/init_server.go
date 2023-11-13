@@ -17,7 +17,7 @@ func InitServer() {
 
 	Router = gin.Default()
 
-    sessionStore := InitSession()
+	sessionStore := InitSession()
 
 	Router.Use(cors.Default())
 	Router.Use(sessions.Sessions("admin", sessionStore))
