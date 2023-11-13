@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>sample gin</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="/styles/output.css" rel="stylesheet">
+    </head>
+    <body>
+
+        <div class="flex items-center justify-between bg-yellow-500 px-4 py-2">
+            <div class="grid h-8 w-8 items-center rounded-full bg-gray-100">
+                <img src="/resource/iconic.png" alt="logo" class="rounded-full" />
+            </div>
+            <div>
+                <a href="/">Audiobook</a>
+            </div>
+            <div class="flex gap-2">
+                <a href="/admin/login" class="rounded px-3 py-1 outline outline-1 outline-blue-500 hover:bg-blue-400 hover:text-white">
+                    Admin
+                </a>
+            </div>
+        </div>
+
+        <div class="pb-8">
+            <h1 class="text-center">stories</h1>
+            <div class="flex flex-wrap justify-center gap-4">
+
+            {{ range .stories }}
+            <div class="w-40 rounded bg-white p-1 outline outline-1 outline-gray-300 hover:shadow-lg">
+                <a href="/story/{{ .Id }}" class="">
+                    <div class="">
+                        <img
+                        class="h-48 w-40 rounded object-cover"
+                        src="{{ .ThumbnailUrl }}"
+                        alt="thumbnail"
+                        />
+                    </div>
+                    <div class="my-2 text-center">
+                        <p>{{ .Title }}</p>
+                    </div>
+                </a>
+            </div>
+            {{ end }}
+
+            </div>
+        </div>
+    </body>
+</html>

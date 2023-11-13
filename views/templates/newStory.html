@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>sample gin</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="/styles/output.css" rel="stylesheet">
+    </head>
+    <body>
+
+        <div class="flex items-center justify-between bg-yellow-500 px-4 py-2">
+            <div class="grid h-8 w-8 items-center rounded-full bg-gray-100">
+                <img src="/resource/iconic.png" alt="logo" class="rounded-full" />
+            </div>
+            <div>
+                <a href="/">Audiobook</a>
+            </div>
+
+            <div class="flex gap-2">
+                <a href="/admin/stories" class="rounded px-3 py-1 outline outline-1 outline-blue-500 hover:bg-blue-400 hover:text-white">
+                    Stories
+                </a>
+                <form action="/admin/logout" method="POST">
+                    <button type="submit" class="rounded bg-red-400 px-3 py-1 outline outline-1 outline-red-400 hover:brightness-90">
+                        Logout
+                    </button>
+                </form>
+            </div>
+
+        </div>
+
+        <div id="status" class="text-center"></div>
+
+        <div class="mx-auto my-0 max-w-xl">
+            <form action="/upload/story" method="POST" id="story-form" enctype="multipart/form-data" 
+                class="grid gap-4 p-2"
+                >
+                <h2 class="text-xl">New Story</h2>
+
+                <input autofocus type="text" required name="title" class="block w-full rounded-lg border-gray-200 px-4 py-3 text-sm outline outline-1 outline-gray-300 focus:ring-blue-500" placeholder="Story title">
+
+                <input type="text" required name="author" class="block w-full rounded-lg border-gray-200 px-4 py-3 text-sm outline outline-1 outline-gray-300 focus:ring-blue-500" placeholder="Name of author">
+
+                <input type="text" required name="words" class="block w-full rounded-lg border-gray-200 px-4 py-3 text-sm outline outline-1 outline-gray-300 focus:ring-blue-500" placeholder="List of difficult words (separated with comma)">
+
+                <div class="flex gap-4">
+                    <div class="flex-1">
+                        <label for="thumbnail" class="">Story cover</label>
+                        <input 
+                        type="file" 
+                        id="thumbnail"
+                        name="thumbnail"
+                        accept="image/*"
+                        required
+                        class="block w-full rounded-lg border border-gray-200 text-sm file:me-4 file:border-0 file:bg-gray-100 file:px-4 file:py-3 focus:z-10 focus:border-blue-500 focus:ring-blue-500"
+                        >
+                    </div>
+
+                    <div class="flex-1">
+                        <label for="audio" class="">Story audio</label>
+                        <input 
+                        type="file" 
+                        id="audio"
+                        name="audio"
+                        accept="audio/*"
+                        required
+                        class="block w-full rounded-lg border border-gray-200 text-sm file:me-4 file:border-0 file:bg-gray-100 file:px-4 file:py-3 focus:z-10 focus:border-blue-500 focus:ring-blue-500"
+                        >
+                    </div>
+                </div>
+
+                <textarea name="story" required class="block w-full rounded-lg border-gray-200 px-4 py-3 text-sm outline outline-1 outline-gray-300 focus:ring-blue-500" rows="6" placeholder="Type your story"></textarea>
+
+                <button id="submit" type="submit" class="rounded-lg border border-transparent bg-blue-600 px-4 py-3 text-sm font-semibold text-white hover:bg-blue-700">
+                    Save story
+                </button>
+            </form>
+        </div>
+    </body>
+        <script src="/scripts/newStory.js"></script>
+        <script src="/scripts/newStoryFormStyling.js"></script>
+</html>

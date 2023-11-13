@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>sample gin</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="/styles/output.css" rel="stylesheet">
+    </head>
+    <body>
+
+        <div class="flex items-center justify-between bg-yellow-500 px-4 py-2">
+            <div class="grid h-8 w-8 items-center rounded-full bg-gray-100">
+                <img src="/resource/iconic.png" alt="logo" class="rounded-full" />
+            </div>
+            <div>
+                <a href="/">Audiobook</a>
+            </div>
+            <div class="flex gap-2">
+                <a href="/admin/stories" class="rounded px-3 py-1 outline outline-1 outline-blue-500 hover:bg-blue-400 hover:text-white">
+                    Admin
+                </a>
+            </div>
+        </div>
+
+        <div class="mx-auto max-w-2xl p-2">
+            <a 
+                href="#" 
+                onclick="javascript:window.history.back(-1);return false;" 
+                class="rounded-sm bg-blue-300 px-2 py-1"
+                >back</a>
+
+            <div class="my-4 text-center">
+                <h1 class="font-bold uppercase">{{ .story.Title }}</h1>
+                <p class="font-light">{{ .story.Author }}</p>
+            </div>
+            <div class="flex justify-center">
+                <audio
+                    controls
+                    controlsList="nodownload"
+                    src="{{ .story.AudioUrl }}"
+                    ></audio>
+            </div>
+            <div class="my-4 rounded-md bg-gray-100 p-4 text-justify">
+                <p>{{ .story.Story }}</p>
+            </div>
+
+            <div class="">
+                <h1 class="mt-10 text-center font-bold">Practice Words</h1>
+
+                <div class="my-4 rounded bg-white p-4">
+                    {{ if .words }}
+                    {{ range .words }}
+                    <div  class="mb-8 text-center">
+                        <p class="">{{ .Word }}</p>
+                        <div class="flex justify-center">
+                            <audio
+                                controls
+                                controlsList="nodownload"
+                                src="{{ .Url }}"
+                                ></audio>
+                        </div>
+                    </div>
+                    {{ end }}
+                    {{ else }}
+                    <h2 class="text-center">No dedicated words for this story</h2>
+                    {{ end }}
+                </div>
+            </div>
+        </div>
+        
+        <!-- <div class="text-center"> -->
+        <!--     <h1>{{ .story.Title }}</h1> -->
+        <!--     <p>{{ .story.Author }}</p> -->
+        <!--     <p>{{ .story.Story }}</p> -->
+        <!--  -->
+        <!--     <h2 class="mt-4">Difficult Words</h2> -->
+        <!--     {{ if .words }} -->
+        <!--         {{ range .words }} -->
+        <!--         <div class="my-1 p-2 outline outline-1"> -->
+        <!--             <h3>word: {{ .Word }}</h3> -->
+        <!--             <audio controls controlsList="nodownload" src={{ .Url }}></audio> -->
+        <!--         </div> -->
+        <!--         {{ end }} -->
+        <!--     {{ else }} -->
+        <!--         <div class=""> -->
+        <!--             <p>No words available</p> -->
+        <!--         </div> -->
+        <!--     {{ end }} -->
+        <!-- </div> -->
+    </body>
+</html>

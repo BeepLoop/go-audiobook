@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="/styles/ouput.css" rel="stylesheet">
+    </head>
+    <body>
+        <form action="/upload" method="POST" enctype="multipart/form-data">
+            <input class="rounded-sm outline outline-1" type="text" id="title" name="title" placeholder="story title">
+            <br>
+            <input class="rounded-sm outline outline-1" type="text" id="author" name="author" placeholder="author name">
+            <br>
+            <input class="rounded-sm outline outline-1" type="text" id="words" name="words" placeholder="difficult words">
+            <br>
+            <input class="rounded-sm outline outline-1" type="text" id="story" name="story" placeholder="story">
+            <br>
+            <input type="file" name="audio" value="">
+            <br>
+            <input type="file" name="thumbnail" value="">
+            <br>
+            <button class="rounded-sm bg-green-400 p-1" type="submit" id="save">save story</button>
+        </form>
+    </body>
+</html>
