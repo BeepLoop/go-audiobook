@@ -1,3 +1,7 @@
+Getting Started:
+    - Change the dsn value in voice_config.json to your mysql database DataSourceName
+
+
 For changing voice setting:
 
     - Open voice_config.json inside config folder.
@@ -14,3 +18,4 @@ NOTE:
 
     - Never change or modify values of  playht_user and api_key. You only need to change this if you want to use different PlayHT account.
         You can refer to PlayHT website for creating your personal account, https://play.ht/
+

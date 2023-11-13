@@ -20,6 +20,7 @@ func Init(port string) error {
 		VoiceEngine: voiceSetting.VoiceEngine,
 		User:        voiceSetting.User,
 		ApiKey:      voiceSetting.ApiKey,
+		Dsn:         voiceSetting.Dsn,
 	}
 
 	return nil

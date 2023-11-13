@@ -8,6 +8,7 @@ type Config struct {
 	VoiceEngine string
 	User        string
 	ApiKey      string
+	Dsn         string
 }
 
 type Setting struct {
@@ -15,5 +16,5 @@ type Setting struct {
 	VoiceEngine string `json:"voice_engine"`
 	User        string `json:"playht_user"`
 	ApiKey      string `json:"api_key"`
+	Dsn         string `json:"dsn"`
 }
-
