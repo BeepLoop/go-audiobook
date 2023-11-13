@@ -75,26 +75,29 @@
 
         <!-- list of stories -->
         <div class="pb-8">
-            <h1 class="text-center">stories</h1>
             <div class="flex flex-wrap justify-center gap-4">
 
-            {{ range .stories }}
-            <div class="w-40 rounded bg-white p-1 outline outline-1 outline-gray-300 hover:shadow-lg">
-                <a href="/story/{{ .Id }}" class="">
-                    <div class="">
-                        <img
-                        class="h-48 w-40 rounded object-cover"
-                        src="{{ .ThumbnailUrl }}"
-                        alt="thumbnail"
-                        />
-                    </div>
-                    <div class="my-2 text-center">
-                        <p>{{ .Title }}</p>
-                    </div>
-                </a>
-                <button type="submit" id="{{ .Id }}" aria-label="delete" class="rounded-sm bg-red-400 p-1">delete</button>  
-            </div>
-            {{ end }}
+                {{ if not .stories }}
+                <p class="mt-20">No stories available</p>
+                {{ end }}
+
+                {{ range .stories }}
+                <div class="w-40 rounded bg-white p-1 outline outline-1 outline-gray-300 hover:shadow-lg">
+                    <a href="/story/{{ .Id }}" class="">
+                        <div class="">
+                            <img
+                            class="h-48 w-40 rounded object-cover"
+                            src="{{ .ThumbnailUrl }}"
+                            alt="thumbnail"
+                            />
+                        </div>
+                        <div class="my-2 text-center">
+                            <p>{{ .Title }}</p>
+                        </div>
+                    </a>
+                    <button type="submit" id="{{ .Id }}" aria-label="delete" class="rounded-sm bg-red-400 p-1">delete</button>  
+                </div>
+                {{ end }}
             </div>
         </div>
     </body>
