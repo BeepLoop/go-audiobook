@@ -8,19 +8,19 @@ import (
 )
 
 type ConvertResult struct {
-	Result *types.Words
+	Result *types.Word
 	Error  error
 }
 
-func CreateResult(word *types.Words, err error) *ConvertResult {
+func CreateResult(word *types.Word, err error) *ConvertResult {
 	return &ConvertResult{
 		Result: word,
 		Error:  err,
 	}
 }
 
-func ConvertTTS(words []string) []*types.Words {
-	var convertedWords []*types.Words
+func ConvertTTS(words []string) []*types.Word {
+	var convertedWords []*types.Word
 
 	wordsChan := make(chan *ConvertResult)
 	var wg sync.WaitGroup

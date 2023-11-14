@@ -5,7 +5,10 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="/resource/iconic.png" type="image/x-icon" rel="icon">
-        <script src="https://cdn.tailwindcss.com"></script>
+        <!-- <script src="https://cdn.tailwindcss.com"></script> -->
+        <style>
+            @import url("/styles/output.css")   
+        </style>
     </head>
     <body>
 
@@ -87,7 +90,7 @@
                         <div class="">
                             <img
                             class="h-48 w-40 rounded object-cover"
-                            src="{{ .ThumbnailUrl }}"
+                            src="{{ .Image }}"
                             alt="thumbnail"
                             />
                         </div>
@@ -98,6 +101,7 @@
                     <button type="submit" id="{{ .Id }}" aria-label="delete" class="rounded-sm bg-red-400 p-1">delete</button>  
                 </div>
                 {{ end }}
+
             </div>
         </div>
     </body>

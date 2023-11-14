@@ -14,9 +14,8 @@ func main() {
 		log.Fatal(err)
 	}
 
-	err = store.Init()
+	err = store.InitStorage()
 	if err != nil {
-		log.Println("Please check your database DSN configuration")
 		log.Fatal(err)
 	}
 

@@ -3,28 +3,20 @@ package server
 import (
 	"log"
 	"net/http"
-	"strconv"
 
 	"github.com/audiobook/middleware"
 	"github.com/audiobook/store"
 	"github.com/gin-gonic/gin"
 )
 
-type NewStory struct {
-	Status string
-}
-
 func HandleStoryRoute(story *gin.RouterGroup) {
 	story.GET("/", func(c *gin.Context) {
 		Router.LoadHTMLGlob("views/templates/stories.html")
 
-		stories, err := store.GetStories()
-		if err != nil {
-			log.Println(err)
-		}
+		log.Println("stories: ", store.Stories.Stories)
 
 		c.HTML(http.StatusOK, "stories.html", gin.H{
-			"stories": stories,
+			"stories": store.Stories.Stories,
 		})
 	})
 
@@ -36,36 +28,19 @@ func HandleStoryRoute(story *gin.RouterGroup) {
 
 	story.GET("/:id", func(c *gin.Context) {
 		Router.LoadHTMLGlob("views/templates/readStory.html")
-		paramsId := c.Params.ByName("id")
+		id := c.Params.ByName("id")
 
-		id, err := strconv.Atoi(paramsId)
-		if err != nil {
-			c.HTML(http.StatusBadRequest, "readStory.html", nil)
-			return
-		}
-
-		story, words, err := store.GetStoryData(id)
-		if err != nil {
-			c.HTML(http.StatusBadRequest, "readStory.html", nil)
-			return
-		}
+		story := store.GetStoryData(id)
 
 		c.HTML(http.StatusOK, "readStory.html", gin.H{
 			"story": story,
-			"words": words,
 		})
 	})
 
 	story.POST("/delete/:id", middleware.CookieMonster, func(c *gin.Context) {
-		paramsId := c.Params.ByName("id")
-		id, err := strconv.Atoi(paramsId)
-		if err != nil {
-			log.Println(err)
-			c.JSON(http.StatusBadRequest, gin.H{"status": "failed"})
-			return
-		}
+		id := c.Params.ByName("id")
 
-		err = store.DeleteStory(id)
+		err := store.DeleteStoryLocal(id)
 		if err != nil {
 			log.Println(err)
 			c.JSON(http.StatusInternalServerError, gin.H{"status": "failed"})
