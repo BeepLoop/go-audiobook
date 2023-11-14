@@ -14,27 +14,7 @@ func main() {
 		log.Fatal(err)
 	}
 
-	err = store.InitLocalStorage()
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	err = store.InitAdminStore()
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	err = store.InitDownloadStore()
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	err = store.LoadCredential()
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	err = store.LoadStories()
+	err = store.InitStorage()
 	if err != nil {
 		log.Fatal(err)
 	}
