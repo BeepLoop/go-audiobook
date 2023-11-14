@@ -6,10 +6,12 @@ import (
 	"github.com/audiobook/config"
 )
 
-func StartServer(env *config.Config) {
-	InitServer()
-
-	if err := Router.Run(env.ListenAddr); err != nil {
-		log.Fatal(err)
+func StartServer(env *config.Config) error {
+	err := Router.Run(env.ListenAddr)
+	if err != nil {
+		log.Println(err)
+		return err
 	}
+
+    return nil
 }
