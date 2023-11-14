@@ -22,6 +22,7 @@ func InitServer() {
 	Router.Use(cors.Default())
 	Router.Use(sessions.Sessions("admin", sessionStore))
 
+	Router.Static("/styles", "views/styles/")
 	Router.Static("/scripts", "views/scripts/")
 	Router.Static("/downloads", "assets/downloads/")
 	Router.Static("/resource", "assets/public/")
