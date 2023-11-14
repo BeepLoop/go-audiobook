@@ -24,6 +24,11 @@ func main() {
 		log.Fatal(err)
 	}
 
+	err = store.InitDownloadStore()
+	if err != nil {
+		log.Fatal(err)
+	}
+
 	err = store.LoadCredential()
 	if err != nil {
 		log.Fatal(err)

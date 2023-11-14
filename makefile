@@ -9,4 +9,7 @@ run:
 
 clean:
 	@rm -rf bin/
-	@rm audiobook
+	@rm assets/downloads/*
+	@rm assets/audios/*
+	@rm assets/thumbnails/*
+	@rm data/*

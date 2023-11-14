@@ -1,1 +1,6 @@
 bin/
+
+audiobook*
+assets/audios/*
+assets/thumbnails/*
+assets/downloads/*

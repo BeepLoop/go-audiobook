@@ -1,6 +1,7 @@
 package server
 
 import (
+	"fmt"
 	"log"
 	"mime/multipart"
 	"net/http"
@@ -45,6 +46,18 @@ func HandleUploadRoute(upload *gin.RouterGroup) {
 			return
 		}
 
+		downloadedWords := utils.MultithreadDownload(convertedWords)
+		fmt.Println("downloaded words")
+		for _, word := range downloadedWords {
+			fmt.Println("word: ", word)
+		}
+
+		if len(downloadedWords) < 1 {
+			c.Request.Method = "GET"
+			c.Redirect(http.StatusSeeOther, "/story/new?status=failed")
+			return
+		}
+
 		randId, err := utils.GenerateUUID()
 		if err != nil {
 			log.Println(err)
@@ -60,7 +73,7 @@ func HandleUploadRoute(upload *gin.RouterGroup) {
 			Content: form.Value["story"][0],
 			Audio:   audioDist,
 			Image:   thumbnailDist,
-			Words:   convertedWords,
+			Words:   downloadedWords,
 		}
 
 		err = store.SaveStoryLocal(&story)

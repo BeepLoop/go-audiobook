@@ -42,7 +42,10 @@ func InitAdminStore() error {
 	}
 	log.Println("creating admin.json because its missing")
 
-	admin := types.Admin{}
+	admin := types.Admin{
+		Username: "admin",
+		Password: "admin",
+	}
 
 	data, err := json.Marshal(admin)
 	if err != nil {
@@ -55,5 +58,21 @@ func InitAdminStore() error {
 	}
 
 	log.Println("admin.json created successfully")
+	return nil
+}
+
+func InitDownloadStore() error {
+	_, err := os.Stat("assets/downloads/")
+	if err != nil {
+		log.Println("creating downloads folder because its missing")
+		err = os.Mkdir("assets/downloads/", 0777)
+		if err != nil {
+			log.Println("Could not create folder for downloads")
+		}
+		log.Println("Dowloads folder created successfully")
+
+		return err
+	}
+
 	return nil
 }
