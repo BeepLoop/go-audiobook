@@ -4,6 +4,7 @@ import (
 	"encoding/gob"
 	"net/http"
 
+	"github.com/audiobook/middleware"
 	"github.com/audiobook/types"
 	"github.com/gin-contrib/cors"
 	"github.com/gin-contrib/sessions"
@@ -20,6 +21,7 @@ func InitServer() {
 	sessionStore := InitSession()
 
 	Router.Use(cors.Default())
+	Router.Use(middleware.MimeSetter)
 	Router.Use(sessions.Sessions("admin", sessionStore))
 
 	Router.Static("/styles", "views/styles/")
