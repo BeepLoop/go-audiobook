@@ -14,9 +14,23 @@ func main() {
 		log.Fatal(err)
 	}
 
-	err = store.Init()
+	err = store.InitLocalStorage()
 	if err != nil {
-		log.Println("Please check your database DSN configuration")
+		log.Fatal(err)
+	}
+
+	err = store.InitAdminStore()
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	err = store.LoadCredential()
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	err = store.LoadStories()
+	if err != nil {
 		log.Fatal(err)
 	}
 

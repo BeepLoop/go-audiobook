@@ -23,6 +23,8 @@ func HandleUploadRoute(upload *gin.RouterGroup) {
 		form, err := c.MultipartForm()
 		if err != nil {
 			log.Println(err)
+			c.Request.Method = "GET"
+			c.Redirect(http.StatusSeeOther, "/story/new?status=failed")
 			return
 		}
 
@@ -33,13 +35,6 @@ func HandleUploadRoute(upload *gin.RouterGroup) {
 
 		audioDist := "/audios/" + audio.Filename
 		thumbnailDist := "/thumbnails/" + thumbnail.Filename
-		story := types.Story{
-			Title:        form.Value["title"][0],
-			Author:       form.Value["author"][0],
-			Story:        form.Value["story"][0],
-			AudioUrl:     audioDist,
-			ThumbnailUrl: thumbnailDist,
-		}
 
 		words := strings.Split(form.Value["words"][0], ", ")
 		convertedWords := api.ConvertTTS(words)
@@ -50,15 +45,25 @@ func HandleUploadRoute(upload *gin.RouterGroup) {
 			return
 		}
 
-		id, err := store.SaveStory(&story)
+		randId, err := utils.GenerateUUID()
 		if err != nil {
 			log.Println(err)
 			c.Request.Method = "GET"
-			c.Redirect(http.StatusSeeOther, "/story/new?status=failed&reason="+err.Error())
+			c.Redirect(http.StatusSeeOther, "/story/new?status=failed")
 			return
 		}
 
-		err = store.SaveWords(convertedWords, id)
+		story := types.Story{
+			Id:      randId,
+			Title:   form.Value["title"][0],
+			Author:  form.Value["author"][0],
+			Content: form.Value["story"][0],
+			Audio:   audioDist,
+			Image:   thumbnailDist,
+			Words:   convertedWords,
+		}
+
+		err = store.SaveStoryLocal(&story)
 		if err != nil {
 			log.Println(err)
 			c.Request.Method = "GET"

@@ -1,30 +1,43 @@
 package store
 
 import (
+	"encoding/json"
+	"fmt"
 	"log"
+	"os"
 
 	"github.com/audiobook/types"
 )
 
 /*
-* saves the story to database. returns -1 if err
- */
-func SaveStory(story *types.Story) (int64, error) {
-	storyQuery := `
-        INSERT INTO 
-            story (title, author, content, audio, thumbnail) 
-        VALUES (?,?,?,?,?)`
-
-	res, err := Db_Conn.Exec(storyQuery, story.Title, story.Author, story.Story, story.AudioUrl, story.ThumbnailUrl)
-    if err != nil {
-        return -1, err
-    }
-
-	id, err := res.LastInsertId()
+saves the story to data/stories.json and
+automatically reloads the stories after saving
+*/
+func SaveStoryLocal(story *types.Story) error {
+	err := LoadStories()
 	if err != nil {
-		log.Println(err)
-		return -1, err
+		fmt.Println(err)
+		return err
 	}
 
-	return id, nil
+	Stories.Stories = append(Stories.Stories, *story)
+
+	data, err := json.Marshal(Stories)
+	if err != nil {
+		log.Println(err)
+		return err
+	}
+
+	err = os.WriteFile("data/stories.json", data, 0666)
+	if err != nil {
+		log.Println(err)
+		return err
+	}
+
+	err = LoadStories()
+	if err != nil {
+		return err
+	}
+
+	return nil
 }

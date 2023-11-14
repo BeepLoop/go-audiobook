@@ -13,7 +13,7 @@ import (
 var Router *gin.Engine
 
 func InitServer() {
-	gob.Register(types.User{})
+	gob.Register(types.Admin{})
 
 	Router = gin.Default()
 

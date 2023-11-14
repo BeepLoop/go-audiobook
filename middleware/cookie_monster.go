@@ -13,7 +13,7 @@ func CookieMonster(c *gin.Context) {
 		log.Println("error cookie: ", err)
 		c.Request.Method = "GET"
 		c.Redirect(http.StatusSeeOther, "/admin/login")
-        c.Abort()
+		c.Abort()
 		return
 	}
 

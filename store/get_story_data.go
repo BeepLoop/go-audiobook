@@ -1,24 +1,16 @@
 package store
 
-import (
-	"github.com/audiobook/types"
-)
+import "github.com/audiobook/types"
 
-func GetStoryData(storyId int) (types.Story, []types.Words, error) {
-	var story types.Story
-	var words []types.Words
+func GetStoryData(storyId string) *types.Story {
+	var data types.Story
 
-	query := "SELECT * FROM story WHERE id=?"
-	err := Db_Conn.Get(&story, query, storyId)
-	if err != nil {
-		return story, words, err
+	for _, story := range Stories.Stories {
+		if story.Id == storyId {
+			data = story
+			break
+		}
 	}
 
-	query = "SELECT id, word, url FROM word WHERE storyId=?"
-	err = Db_Conn.Select(&words, query, storyId)
-	if err != nil {
-		return story, words, err
-	}
-
-	return story, words, nil
+	return &data
 }
