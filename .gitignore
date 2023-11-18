@@ -1,6 +1,8 @@
 bin/
 
-audiobook*
+release/
+
+go-audiobook*
 assets/audios/*
 assets/thumbnails/*
 assets/downloads/*

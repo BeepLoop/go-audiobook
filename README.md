@@ -8,6 +8,9 @@ A web application made with Go as a collaborative project with education student
 - [Tailwindcss](https://tailwindcss.com/) - A utility-first CSS framework.
 - [Gin](https://gin-gonic.com/) - A web framework for Go that features a Martini-like API.
 
+## Installation 
+Visit the [releases page](https://github.com/BeepLoop/go-audiobook/releases/tag/v1.0.0) to get the the release version of the project.
+
 ## Requirements
 go-audiobook requires a version of [Go](https://go.dev/) to be installed. If you want to edit the contents, design, and add pages, you must have a [Tailwindcss](https://tailwindcss.com/) installed. Visit [here](https://tailwindcss.com/docs/installation) for a guide on how to install Tailwindcss. The project is built using Tailwindcss standalone executable, thus it is the recommended one to use.
 
