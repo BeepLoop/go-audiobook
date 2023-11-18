@@ -3,7 +3,7 @@ package utils
 import (
 	"strings"
 
-	"github.com/audiobook/types"
+	"github.com/BeepLoop/go-audiobook/types"
 )
 
 func IsInputEmpty(input *types.Admin) bool {

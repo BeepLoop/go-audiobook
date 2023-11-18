@@ -7,10 +7,10 @@ import (
 	"net/http"
 	"strings"
 
-	"github.com/audiobook/api"
-	"github.com/audiobook/store"
-	"github.com/audiobook/types"
-	"github.com/audiobook/utils"
+	"github.com/BeepLoop/go-audiobook/api"
+	"github.com/BeepLoop/go-audiobook/store"
+	"github.com/BeepLoop/go-audiobook/types"
+	"github.com/BeepLoop/go-audiobook/utils"
 	"github.com/gin-gonic/gin"
 )
 

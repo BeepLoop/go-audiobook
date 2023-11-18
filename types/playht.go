@@ -1,6 +1,6 @@
 package types
 
-import "github.com/audiobook/config"
+import "github.com/BeepLoop/go-audiobook/config"
 
 type PlayHTPayload struct {
 	Text          string `json:"text"`

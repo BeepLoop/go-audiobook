@@ -1,7 +1,7 @@
 package server
 
 import (
-	"github.com/audiobook/config"
+	"github.com/BeepLoop/go-audiobook/config"
 	"github.com/gin-contrib/sessions"
 	"github.com/gin-contrib/sessions/cookie"
 )

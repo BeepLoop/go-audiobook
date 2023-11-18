@@ -4,7 +4,7 @@ import (
 	"encoding/json"
 	"os"
 
-	"github.com/audiobook/types"
+	"github.com/BeepLoop/go-audiobook/types"
 )
 
 var Credential types.Admin

@@ -1,6 +1,6 @@
 package store
 
-import "github.com/audiobook/types"
+import "github.com/BeepLoop/go-audiobook/types"
 
 func GetStoryData(storyId string) *types.Story {
 	var data types.Story

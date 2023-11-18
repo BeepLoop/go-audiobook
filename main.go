@@ -6,9 +6,9 @@ import (
 	"os/exec"
 	"runtime"
 
-	"github.com/audiobook/config"
-	"github.com/audiobook/server"
-	"github.com/audiobook/store"
+	"github.com/BeepLoop/go-audiobook/config"
+	"github.com/BeepLoop/go-audiobook/server"
+	"github.com/BeepLoop/go-audiobook/store"
 )
 
 func main() {

@@ -4,7 +4,7 @@ import (
 	"log"
 	"sync"
 
-	"github.com/audiobook/types"
+	"github.com/BeepLoop/go-audiobook/types"
 )
 
 type DownloadResult struct {

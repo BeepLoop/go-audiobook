@@ -5,8 +5,8 @@ import (
 	"encoding/json"
 	"net/http"
 
-	"github.com/audiobook/config"
-	"github.com/audiobook/types"
+	"github.com/BeepLoop/go-audiobook/config"
+	"github.com/BeepLoop/go-audiobook/types"
 )
 
 func CreateRequest(payload *types.PlayHTPayload) (*http.Request, error) {

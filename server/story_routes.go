@@ -4,8 +4,8 @@ import (
 	"log"
 	"net/http"
 
-	"github.com/audiobook/middleware"
-	"github.com/audiobook/store"
+	"github.com/BeepLoop/go-audiobook/middleware"
+	"github.com/BeepLoop/go-audiobook/store"
 	"github.com/gin-gonic/gin"
 )
 

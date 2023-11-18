@@ -9,8 +9,8 @@ import (
 	"sync"
 	"time"
 
-	"github.com/audiobook/types"
-	"github.com/audiobook/utils"
+	"github.com/BeepLoop/go-audiobook/types"
+	"github.com/BeepLoop/go-audiobook/utils"
 )
 
 var playHTUrl = "https://api.play.ht/api/v2/tts"

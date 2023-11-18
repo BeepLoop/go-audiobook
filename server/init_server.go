@@ -4,8 +4,8 @@ import (
 	"encoding/gob"
 	"net/http"
 
-	"github.com/audiobook/middleware"
-	"github.com/audiobook/types"
+	"github.com/BeepLoop/go-audiobook/middleware"
+	"github.com/BeepLoop/go-audiobook/types"
 	"github.com/gin-contrib/cors"
 	"github.com/gin-contrib/sessions"
 	"github.com/gin-gonic/gin"

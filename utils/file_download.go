@@ -8,7 +8,7 @@ import (
 	"os"
 	"sync"
 
-	"github.com/audiobook/types"
+	"github.com/BeepLoop/go-audiobook/types"
 )
 
 func DownloadFile(word *types.Word, ch chan<- *DownloadResult, wg *sync.WaitGroup) *DownloadResult {

@@ -3,7 +3,7 @@ package server
 import (
 	"log"
 
-	"github.com/audiobook/config"
+	"github.com/BeepLoop/go-audiobook/config"
 )
 
 func StartServer(env *config.Config) error {

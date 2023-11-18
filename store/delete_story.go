@@ -6,7 +6,7 @@ import (
 	"log"
 	"os"
 
-	"github.com/audiobook/types"
+	"github.com/BeepLoop/go-audiobook/types"
 )
 
 /*
