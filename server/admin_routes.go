@@ -17,7 +17,9 @@ import (
 
 func HandleAdminRoute(admin *gin.RouterGroup) {
 	admin.GET("/stories", middleware.CookieMonster, func(c *gin.Context) {
-		Router.LoadHTMLGlob("views/templates/adminStories.html")
+		// Router.LoadHTMLGlob("views/templates/adminStories.html")
+		html := utils.HtmlParser("adminStories.html", "components/header.html")
+		Router.SetHTMLTemplate(html)
 
 		c.HTML(http.StatusOK, "adminStories.html", gin.H{
 			"stories": store.Stories.Stories,
@@ -25,7 +27,10 @@ func HandleAdminRoute(admin *gin.RouterGroup) {
 	})
 
 	admin.GET("/login", func(c *gin.Context) {
-		Router.LoadHTMLGlob("views/templates/login.html")
+		// Router.LoadHTMLGlob("views/templates/login.html")
+		html := utils.HtmlParser("login.html", "components/header.html")
+		Router.SetHTMLTemplate(html)
+
 		c.HTML(http.StatusOK, "login.html", nil)
 	})
 

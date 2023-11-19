@@ -6,6 +6,7 @@ import (
 
 	"github.com/BeepLoop/go-audiobook/middleware"
 	"github.com/BeepLoop/go-audiobook/types"
+	"github.com/BeepLoop/go-audiobook/utils"
 	"github.com/gin-contrib/cors"
 	"github.com/gin-contrib/sessions"
 	"github.com/gin-gonic/gin"
@@ -32,13 +33,15 @@ func InitServer() {
 	Router.Static("/thumbnails", "assets/thumbnails/")
 
 	Router.GET("/", func(c *gin.Context) {
-		Router.LoadHTMLGlob("views/templates/index.html")
+		html := utils.HtmlParser("index.html", "components/header.html")
+		Router.SetHTMLTemplate(html)
 
 		c.HTML(http.StatusOK, "index.html", nil)
 	})
 
 	Router.NoRoute(func(c *gin.Context) {
-		Router.LoadHTMLGlob("views/templates/404.html")
+		html := utils.HtmlParser("404.html", "components/header.html")
+		Router.SetHTMLTemplate(html)
 
 		c.HTML(http.StatusNotFound, "404.html", nil)
 	})
