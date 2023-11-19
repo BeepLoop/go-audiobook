@@ -12,8 +12,7 @@ import (
 
 func HandleStoryRoute(story *gin.RouterGroup) {
 	story.GET("/", func(c *gin.Context) {
-		// Router.LoadHTMLGlob("views/templates/stories.html")
-		html := utils.HtmlParser("stories.html", "components/header.html")
+		html := utils.HtmlParser("stories.html", "components/header.html", "components/topbar.html")
 		Router.SetHTMLTemplate(html)
 
 		log.Println("stories: ", store.Stories.Stories)
@@ -24,16 +23,14 @@ func HandleStoryRoute(story *gin.RouterGroup) {
 	})
 
 	story.GET("/new", middleware.CookieMonster, func(c *gin.Context) {
-		// Router.LoadHTMLGlob("views/templates/newStory.html")
-		html := utils.HtmlParser("newStory.html", "components/header.html")
+		html := utils.HtmlParser("newStory.html", "components/header.html", "components/adminTopbar.html")
 		Router.SetHTMLTemplate(html)
 
 		c.HTML(http.StatusOK, "newStory.html", nil)
 	})
 
 	story.GET("/:id", func(c *gin.Context) {
-		// Router.LoadHTMLGlob("views/templates/readStory.html")
-		html := utils.HtmlParser("readStory.html", "components/header.html")
+		html := utils.HtmlParser("readStory.html", "components/header.html", "components/topbar.html")
 		Router.SetHTMLTemplate(html)
 
 		id := c.Params.ByName("id")

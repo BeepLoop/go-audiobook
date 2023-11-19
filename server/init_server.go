@@ -33,7 +33,7 @@ func InitServer() {
 	Router.Static("/thumbnails", "assets/thumbnails/")
 
 	Router.GET("/", func(c *gin.Context) {
-		html := utils.HtmlParser("index.html", "components/header.html")
+		html := utils.HtmlParser("index.html", "components/header.html", "components/topbar.html")
 		Router.SetHTMLTemplate(html)
 
 		c.HTML(http.StatusOK, "index.html", nil)

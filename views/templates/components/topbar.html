@@ -1,0 +1,15 @@
+{{ define "topbar" }}
+<div class="flex items-center justify-between bg-yellow-500 px-4 py-2">
+    <div class="grid h-8 w-8 items-center rounded-full bg-gray-100">
+        <img src="/resource/iconic.png" alt="logo" class="rounded-full" />
+    </div>
+    <div>
+        <a href="/">Audiobook</a>
+    </div>
+    <div class="flex gap-2">
+        <a href="/admin/stories" class="rounded px-3 py-1 outline outline-1 outline-blue-500 hover:bg-blue-400 hover:text-white">
+            Admin
+        </a>
+    </div>
+</div>
+{{ end }}

@@ -3,26 +3,7 @@
     {{ template "header" }}
     <body>
 
-        <!-- topbar -->
-        <div class="flex items-center justify-between bg-yellow-500 px-4 py-2">
-            <div class="grid h-8 w-8 items-center rounded-full bg-gray-100">
-                <img src="/resource/iconic.png" alt="logo" class="rounded-full" />
-            </div>
-            <div>
-                <a href="/">Audiobook</a>
-            </div>
-
-            <div class="flex gap-2">
-                <a href="/story/new" class="rounded px-3 py-1 outline outline-1 outline-blue-500 hover:bg-blue-400 hover:text-white">
-                    Add Story
-                </a>
-                <form action="/admin/logout" method="POST">
-                    <button type="submit" class="rounded bg-red-400 px-3 py-1 outline outline-1 outline-red-400 hover:brightness-90">
-                        Logout
-                    </button>
-                </form>
-            </div>
-        </div>
+        {{ template "adminTopbar" }}
 
        <!-- confirmation modal when deleting story  -->
         <div id="confirm-modal" class="hidden">
