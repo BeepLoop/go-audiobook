@@ -33,17 +33,17 @@ func InitServer() {
 	Router.Static("/thumbnails", "assets/thumbnails/")
 
 	Router.GET("/", func(c *gin.Context) {
-		html := utils.HtmlParser("index.html", "components/header.html", "components/topbar.html")
+		html := utils.HtmlParser("index.tmpl", "components/header.tmpl", "components/topbar.tmpl")
 		Router.SetHTMLTemplate(html)
 
-		c.HTML(http.StatusOK, "index.html", nil)
+		c.HTML(http.StatusOK, "index.tmpl", nil)
 	})
 
 	Router.NoRoute(func(c *gin.Context) {
-		html := utils.HtmlParser("404.html", "components/header.html")
+		html := utils.HtmlParser("404.tmpl", "components/header.tmpl")
 		Router.SetHTMLTemplate(html)
 
-		c.HTML(http.StatusNotFound, "404.html", nil)
+		c.HTML(http.StatusNotFound, "404.tmpl", nil)
 	})
 
 	story := Router.Group("/story")

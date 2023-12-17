@@ -1,0 +1,66 @@
+{{ define "adminTopbar" }}
+<div class="flex items-center justify-between bg-yellow-500 px-4 py-2">
+    <div class="grid h-8 w-8 items-center rounded-full bg-gray-100">
+        <img src="/resource/iconic.png" alt="logo" class="rounded-full" />
+    </div>
+    <div>
+        <a href="/">Audiobook</a>
+    </div>
+
+    <div class="flex gap-2">
+        <a href="/story/new" class="rounded px-3 py-1 outline outline-1 outline-blue-500 hover:bg-blue-400 hover:text-white">
+            Add Story
+        </a>
+
+        <button id="sidebar" type="button" class="rounded p-1">
+            <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="25" height="25" viewBox="0 0 50 50">
+                <path d="M 0 9 L 0 11 L 50 11 L 50 9 Z M 0 24 L 0 26 L 50 26 L 50 24 Z M 0 39 L 0 41 L 50 41 L 50 39 Z"></path>
+            </svg>
+        </button>
+
+        <!-- component -->
+        <div id="nav" class="shadow-blue-gray-900/5 absolute bottom-0 right-0 top-0 hidden w-full max-w-[20rem] flex-col rounded-xl bg-white bg-clip-border p-4 text-gray-700 shadow-xl">
+            <div class="mb-2 p-4">
+                <button type="button" id="close" >
+                    Close
+                </button>
+            </div>
+            <nav class="flex min-w-[240px] flex-col gap-1 p-2 font-sans text-base font-normal text-gray-700">
+                <div id="settings" role="button" tabindex="0" class="flex w-full items-center rounded-lg p-3 text-start leading-tight outline-none transition-all hover:bg-blue-50 hover:bg-opacity-80 hover:text-blue-900 focus:bg-blue-50 focus:bg-opacity-80 focus:text-blue-900 active:bg-blue-50 active:bg-opacity-80 active:text-blue-900">
+                    <div class="mr-4 grid place-items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" class="h-5 w-5">
+                            <path fill-rule="evenodd" d="M11.078 2.25c-.917 0-1.699.663-1.85 1.567L9.05 4.889c-.02.12-.115.26-.297.348a7.493 7.493 0 00-.986.57c-.166.115-.334.126-.45.083L6.3 5.508a1.875 1.875 0 00-2.282.819l-.922 1.597a1.875 1.875 0 00.432 2.385l.84.692c.095.078.17.229.154.43a7.598 7.598 0 000 1.139c.015.2-.059.352-.153.43l-.841.692a1.875 1.875 0 00-.432 2.385l.922 1.597a1.875 1.875 0 002.282.818l1.019-.382c.115-.043.283-.031.45.082.312.214.641.405.985.57.182.088.277.228.297.35l.178 1.071c.151.904.933 1.567 1.85 1.567h1.844c.916 0 1.699-.663 1.85-1.567l.178-1.072c.02-.12.114-.26.297-.349.344-.165.673-.356.985-.57.167-.114.335-.125.45-.082l1.02.382a1.875 1.875 0 002.28-.819l.923-1.597a1.875 1.875 0 00-.432-2.385l-.84-.692c-.095-.078-.17-.229-.154-.43a7.614 7.614 0 000-1.139c-.016-.2.059-.352.153-.43l.84-.692c.708-.582.891-1.59.433-2.385l-.922-1.597a1.875 1.875 0 00-2.282-.818l-1.02.382c-.114.043-.282.031-.449-.083a7.49 7.49 0 00-.985-.57c-.183-.087-.277-.227-.297-.348l-.179-1.072a1.875 1.875 0 00-1.85-1.567h-1.843zM12 15.75a3.75 3.75 0 100-7.5 3.75 3.75 0 000 7.5z" clip-rule="evenodd"></path>
+                        </svg>
+                    </div>
+                    Settings
+                </div>
+                <div role="button" id="logout" tabindex="0" class="flex w-full items-center rounded-lg p-3 text-start leading-tight outline-none transition-all hover:bg-blue-50 hover:bg-opacity-80 hover:text-blue-900 focus:bg-blue-50 focus:bg-opacity-80 focus:text-blue-900 active:bg-blue-50 active:bg-opacity-80 active:text-blue-900">
+                    <div class="mr-4 grid place-items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" class="h-5 w-5">
+                            <path fill-rule="evenodd" d="M12 2.25a.75.75 0 01.75.75v9a.75.75 0 01-1.5 0V3a.75.75 0 01.75-.75zM6.166 5.106a.75.75 0 010 1.06 8.25 8.25 0 1011.668 0 .75.75 0 111.06-1.06c3.808 3.807 3.808 9.98 0 13.788-3.807 3.808-9.98 3.808-13.788 0-3.808-3.807-3.808-9.98 0-13.788a.75.75 0 011.06 0z" clip-rule="evenodd"></path>
+                        </svg>
+                    </div>
+                    Log Out
+                </div>
+            </nav>
+        </div>
+
+        <form action="/admin/logout" method="POST" id="logout-form"></form>
+    </div>
+    <script>
+        document.getElementById('close').addEventListener('click', () => {
+            document.getElementById('nav').classList.add('hidden')
+        })
+
+        document.getElementById('sidebar').addEventListener('click', () => {
+            document.getElementById('nav').classList.remove('hidden')
+        })
+        document.getElementById('logout').addEventListener('click', () => {
+            document.getElementById('logout-form').submit()
+        })
+        document.getElementById('settings').addEventListener('click', () => {
+            window.location.href = "/admin/settings"
+        })
+    </script>
+</div>
+{{ end }}

@@ -22,7 +22,7 @@ func main() {
 		log.Fatal(err)
 	}
 
-	OpenBrowser()
+	// OpenBrowser()
 
 	server.InitServer()
 	err = server.StartServer(config.Env)

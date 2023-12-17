@@ -12,32 +12,32 @@ import (
 
 func HandleStoryRoute(story *gin.RouterGroup) {
 	story.GET("/", func(c *gin.Context) {
-		html := utils.HtmlParser("stories.html", "components/header.html", "components/topbar.html")
+		html := utils.HtmlParser("stories.tmpl", "components/header.tmpl", "components/topbar.tmpl")
 		Router.SetHTMLTemplate(html)
 
 		log.Println("stories: ", store.Stories.Stories)
 
-		c.HTML(http.StatusOK, "stories.html", gin.H{
+		c.HTML(http.StatusOK, "stories.tmpl", gin.H{
 			"stories": store.Stories.Stories,
 		})
 	})
 
 	story.GET("/new", middleware.CookieMonster, func(c *gin.Context) {
-		html := utils.HtmlParser("newStory.html", "components/header.html", "components/adminTopbar.html")
+		html := utils.HtmlParser("newStory.tmpl", "components/header.tmpl", "components/adminTopbar.tmpl")
 		Router.SetHTMLTemplate(html)
 
-		c.HTML(http.StatusOK, "newStory.html", nil)
+		c.HTML(http.StatusOK, "newStory.tmpl", nil)
 	})
 
 	story.GET("/:id", func(c *gin.Context) {
-		html := utils.HtmlParser("readStory.html", "components/header.html", "components/topbar.html")
+		html := utils.HtmlParser("readStory.tmpl", "components/header.tmpl", "components/topbar.tmpl")
 		Router.SetHTMLTemplate(html)
 
 		id := c.Params.ByName("id")
 
 		story := store.GetStoryData(id)
 
-		c.HTML(http.StatusOK, "readStory.html", gin.H{
+		c.HTML(http.StatusOK, "readStory.tmpl", gin.H{
 			"story": story,
 		})
 	})

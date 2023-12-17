@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+    {{ template "header" }}
+
+    <body>
+        {{ template "adminTopbar" }}   
+
+        <div>
+            <div class="mx-4">
+                <h1 class="border-b py-6 text-4xl font-semibold">Settings</h1>
+
+                <div class="grid grid-cols-8 pt-3">
+
+                    <div class="col-span-2">
+                        <ul>
+                            <li class="mt-5 cursor-pointer border-l-2 border-l-blue-700 px-2 py-2 font-semibold text-blue-700 transition hover:border-l-blue-700 hover:text-blue-700">Audio Conversion Config</li>
+                        </ul>
+                    </div>
+
+                    <form action="#" method="POST" class="col-span-6 p-4 outline outline-1 outline-gray-100">
+                        <div class="grid gap-4">
+
+                            <div>
+                                <label for="voiceId" class="mb-2 block text-sm font-medium">Voice ID</label>
+                                <input type="text" id="voiceId" class="w-44 rounded-lg px-4 py-2 text-sm outline outline-1 outline-gray-300 ">
+                            </div>
+                            <div>
+                                <label for="voiceEngine" class="mb-2 block text-sm font-medium">Voice Engine</label>
+                                <input type="text" id="voiceEngine" class="w-44 rounded-lg px-4 py-2 text-sm outline outline-1 outline-gray-300 ">
+                            </div>
+                            <div>
+                                <label for="PlayHTUserId" class="mb-2 block text-sm font-medium">PlayHT User ID</label>
+                                <input type="text" id="PlayHTUserId" class="w-44 rounded-lg px-4 py-2 text-sm outline outline-1 outline-gray-300 ">
+                            </div>
+                            <div>
+                                <label for="ApiKey" class="mb-2 block text-sm font-medium">PlayHT API Key</label>
+                                <input type="text" id="ApiKey" class="w-44 rounded-lg px-4 py-2 text-sm outline outline-1 outline-gray-300 ">
+                            </div>
+
+                            <div>
+                                <button type="submit" class="rounded bg-blue-400 px-3 py-1">Save</button>
+                            </div>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+
+    </body>
+</html>

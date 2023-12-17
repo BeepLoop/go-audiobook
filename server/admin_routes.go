@@ -17,19 +17,19 @@ import (
 
 func HandleAdminRoute(admin *gin.RouterGroup) {
 	admin.GET("/stories", middleware.CookieMonster, func(c *gin.Context) {
-		html := utils.HtmlParser("adminStories.html", "components/header.html", "components/adminTopbar.html")
+		html := utils.HtmlParser("adminStories.tmpl", "components/header.tmpl", "components/adminTopbar.tmpl")
 		Router.SetHTMLTemplate(html)
 
-		c.HTML(http.StatusOK, "adminStories.html", gin.H{
+		c.HTML(http.StatusOK, "adminStories.tmpl", gin.H{
 			"stories": store.Stories.Stories,
 		})
 	})
 
 	admin.GET("/login", func(c *gin.Context) {
-		html := utils.HtmlParser("login.html", "components/header.html", "components/topbar.html")
+		html := utils.HtmlParser("login.tmpl", "components/header.tmpl", "components/topbar.tmpl")
 		Router.SetHTMLTemplate(html)
 
-		c.HTML(http.StatusOK, "login.html", nil)
+		c.HTML(http.StatusOK, "login.tmpl", nil)
 	})
 
 	admin.POST("/login", func(c *gin.Context) {
@@ -74,5 +74,12 @@ func HandleAdminRoute(admin *gin.RouterGroup) {
 
 		c.Request.Method = "GET"
 		c.Redirect(http.StatusSeeOther, "/")
+	})
+
+	admin.GET("/settings", func(c *gin.Context) {
+		html := utils.HtmlParser("settings.tmpl", "components/header.tmpl", "components/adminTopbar.tmpl")
+		Router.SetHTMLTemplate(html)
+
+		c.HTML(http.StatusOK, "settings.tmpl", nil)
 	})
 }
