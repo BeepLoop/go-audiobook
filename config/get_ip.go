@@ -5,14 +5,14 @@ import (
 	"net"
 )
 
-func GetOutboundIP() (net.IP, error) {
+func GetOutboundIP() (string, error) {
 	conn, err := net.Dial("udp", "8.8.8.8:80")
 	if err != nil {
-		return nil, errors.New("failed to get local IP addr")
+		return "", errors.New("failed to get local IP addr")
 	}
 	defer conn.Close()
 
-	localAddr := conn.LocalAddr().(*net.UDPAddr)
+	localAddr := conn.LocalAddr().String()
 
-	return localAddr.IP, nil
+	return localAddr, nil
 }

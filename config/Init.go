@@ -1,6 +1,8 @@
 package config
 
-import "fmt"
+import (
+	"strings"
+)
 
 var Env *Config
 
@@ -12,10 +14,11 @@ func Init(port string) error {
 		return err
 	}
 
+	localAddr := strings.Split(ip, ":")[0]
 	Env = &Config{
-		IP:          fmt.Sprintf("%v", ip),
+		IP:          localAddr,
 		Port:        port,
-		ListenAddr:  fmt.Sprintf("%v:%v", ip, port),
+		ListenAddr:  localAddr + ":" + port,
 		VoiceId:     voiceSetting.Id,
 		VoiceEngine: voiceSetting.VoiceEngine,
 		User:        voiceSetting.User,
