@@ -2,7 +2,7 @@ build:
 	@go build
 
 start: build
-	@./audiobook
+	@./go-audiobook
 
 run:
 	@gow -e=go,mod,html -i=target run .
